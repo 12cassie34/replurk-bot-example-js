@@ -5,6 +5,9 @@
   "repository": "https://github.com/12cassie34/replurk-bot-example-js",
   "author": "12cassie34 <ineslin35@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "node index.js"
+  },
   "dependencies": {
     "crypto": "^1.0.1",
     "dotenv": "^16.4.7",

@@ -51,9 +51,8 @@ const makeGetRequest = (url, headers) => {
 };
 
 // Function to search for specific hashtags
-const searchPlurks = async () => {
+const searchPlurks = async (query) => {
     console.log("🔍 Searching for Plurks...");
-    const query = "Your Search Query Here";
     const oauthParams = {
         oauth_consumer_key: CONSUMER_KEY,
         oauth_token: OAUTH_TOKEN,
@@ -123,13 +122,21 @@ const replurk = async (plurkIds) => {
     }
 };
 
-// API endpoint to manually trigger replurk
+// API endpoint to trigger replurk
 app.get("/run-cron", async (req, res) => {
-    console.log("🛠 Manually triggering Plurk Auto-Replurk Job...");
-    const plurkIds = await searchPlurks();
-    console.log("plurkIds", plurkIds);
-    await replurk(plurkIds);
-    res.status(200).send("Manually triggered replurk completed!");
+    console.log("🛠 Triggering Plurk Auto-Replurk Job...");
+
+    const hashTags = ["#卿卿我我", "#卿卿我我 #角色推薦"];
+
+    hashTags.forEach(async (tag) => {
+        const plurkIds = await searchPlurks(tag);
+        console.log("plurkIds", plurkIds);
+        await replurk(plurkIds);
+
+        
+    });
+
+    res.status(200).send(`Replurked posts that contain ${hashTags.join(', ')} completed!`);
 });
 
 // Start server
