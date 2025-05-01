@@ -1,15 +1,13 @@
 {
-  "name": "lovey-dovey-replurk",
+  "name": "replurk-bot-example-js",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/12cassie34/lovey-dovey-replurk.git",
+  "repository": "https://github.com/12cassie34/replurk-bot-example-js",
   "author": "12cassie34 <ineslin35@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "crypto": "^1.0.1",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2",
-    "node-cron": "^3.0.3",
-    "node-fetch": "^3.3.2"
+    "express": "^4.21.2"
   }
 }

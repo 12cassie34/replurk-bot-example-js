@@ -1,6 +1,5 @@
 const express = require("express");
 const crypto = require("crypto");
-const cron = require("node-cron");
 const https = require("https");
 require("dotenv").config();
 
@@ -123,14 +122,6 @@ const replurk = async (plurkIds) => {
         console.error("❌ Error replurking:", error);
     }
 };
-
-// Set up the cron job to run every hour
-cron.schedule("0 * * * *", async () => {
-    console.log("⏳ Running Plurk Auto-Replurk Job...");
-    const plurkIds = await searchPlurks();
-    await replurk(plurkIds);
-    console.log("🎉 Job finished!");
-});
 
 // API endpoint to manually trigger replurk
 app.get("/run-cron", async (req, res) => {
